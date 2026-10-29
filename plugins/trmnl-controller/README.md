@@ -17,7 +17,7 @@ TRMNL Controller is useful when the work needs to live on your machine:
 | Develop a display like a small software project | Local markup and settings, validation, HTML previews, exports, and compare/deploy tools. Files can be reviewed and versioned in your own repository. |
 | Turn an API response into a display | Saved JSON pipelines with host allowlists, environment-based secret references, field projection and payload checks. |
 | Keep data fresh without an AI call every time | A deterministic worker with deduplication, retry backoff and publishing. Codex can help create the pipeline; Node runs subsequent updates. |
-| Use information from your local tools | Author and run a local publisher or harness automation, with an explicit target and reviewed output. Private data stays local until your publisher sends it. |
+| Use information from your local tools | Author and run a local publisher or harness automation, with an explicit target and reviewed output. You control which fields are sent to TRMNL. Data you give the agent also enters its host/model context. |
 | Use several accounts or a compatible BYOS server | Explicit profiles with separate server origins and credential references. Compatibility depends on that server's API. |
 
 It still needs Node, your TRMNL authorization and a running machine for local jobs. It uses TRMNL's API and render allowances. The plugin doesn't make remote services available offline or add a scheduler to MCP.
