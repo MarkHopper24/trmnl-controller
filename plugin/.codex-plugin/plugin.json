@@ -1,6 +1,6 @@
 {
   "name": "trmnl-controller",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TRMNL API tools, Framework-aware plugin creation and scheduled data middleware.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
@@ -25,7 +25,7 @@
     "logo": "./assets/trmnl-brand.svg",
     "screenshots": [
       "./assets/codex-workflow.jpg",
-      "./assets/plugin-overview.jpg"
+      "./assets/plugin-overview.png"
     ]
   },
   "homepage": "https://github.com/MarkHopper24/trmnl-controller",

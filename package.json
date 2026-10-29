@@ -1,6 +1,6 @@
 {
   "name": "trmnl-controller-mcp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TRMNL Controller: local Codex plugin, documented API tools and deterministic data pipelines.",
   "type": "module",
   "bin": {

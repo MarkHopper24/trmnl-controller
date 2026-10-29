@@ -24,16 +24,24 @@ It still needs Node, your TRMNL authorization and a running machine for local jo
 
 ## Screenshots
 
-The supplied screenshots show the earlier **TRMNL Control** name and version. The current listing is **TRMNL Controller**.
+The workflow example uses the earlier **TRMNL Control** name. The listing screenshot shows **TRMNL Controller** installed in Codex.
 
 ![Codex building a local session snapshot for a TRMNL display](assets/codex-workflow.jpg)
 
 <details>
 <summary>Plugin listing and bundled skills</summary>
 
-![Earlier plugin listing with authoring, devices, scheduling and setup skills](assets/plugin-overview.jpg)
+![TRMNL Controller installed in Codex, with authoring, devices, scheduling and setup skills](assets/plugin-overview.png)
 
 </details>
+
+## Let Codex handle installation
+
+Paste this single prompt into Codex in the ChatGPT desktop app or Codex CLI:
+
+> Install TRMNL Controller from https://github.com/MarkHopper24/trmnl-controller using its README; check and install any missing prerequisites, register its Codex marketplace, install and enable the plugin, guide me through TRMNL browser authorization, then verify the connection by listing my devices without changing them.
+
+Codex can do the local setup and checks. You complete browser consent yourself; it may also need you to restart the app or start a new session to load the plugin.
 
 ## Install in Codex in the ChatGPT desktop app
 

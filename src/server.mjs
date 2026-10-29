@@ -20,7 +20,7 @@ export function createContext(config, fetcher) {
 }
 export function createServer(config, context) {
   const ctx = context || createContext(config);
-  const server = new Server({ name:'trmnl-controller', version:'0.2.0' }, { capabilities:{ tools:{}, resources:{}, prompts:{} }, instructions:'Use catalog_search to discover tools. All authored TRMNL plugins must follow framework_guide and be validated and visually previewed. Natural-language work uses the current harness model. Host schedules are created by host tools, never implied by a schedule plan. Use only user-authorized remote actions. Device API getDisplay advances a playlist; use getCurrentScreen for passive inspection. Do not expose credentials. Official TRMNL-hosted MCP is also available at https://trmnl.com/mcp.' });
+  const server = new Server({ name:'trmnl-controller', version:'0.2.1' }, { capabilities:{ tools:{}, resources:{}, prompts:{} }, instructions:'Use catalog_search to discover tools. All authored TRMNL plugins must follow framework_guide and be validated and visually previewed. Natural-language work uses the current harness model. Host schedules are created by host tools, never implied by a schedule plan. Use only user-authorized remote actions. Device API getDisplay advances a playlist; use getCurrentScreen for passive inspection. Do not expose credentials. Official TRMNL-hosted MCP is also available at https://trmnl.com/mcp.' });
   ctx.server = server;
   const ajv = new Ajv({strict:false,allErrors:true,validateFormats:false});
   const helpers = helperTools(ctx).map(t => ({...t,validate:ajv.compile(t.inputSchema)}));

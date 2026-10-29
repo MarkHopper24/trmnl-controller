@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 — 2026-10-29
+
+- Replace the old listing screenshot with the supplied TRMNL Controller listing.
+- Add a single prompt for Codex to handle prerequisites, marketplace installation, guided authorization and read-only verification.
+
 ## 0.2.0 — 2026-10-29
 
 - Publish a GitHub marketplace with a ready-made local runtime under the display name **TRMNL Controller**.

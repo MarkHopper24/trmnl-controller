@@ -56,7 +56,7 @@ export class TrmnlClient {
       } else if (value && typeof value === 'object') { for (const [k, v] of Object.entries(value)) url.searchParams.append(`${key}[${k}]`, String(v)); }
       else url.searchParams.set(key, String(value));
     }
-    const headers = { Accept: 'application/json', 'User-Agent': 'trmnl-control-mcp/0.2.0', ...Object.fromEntries(Object.entries(args.headers || {}).map(([k,v]) => [k, String(v)])) };
+    const headers = { Accept: 'application/json', 'User-Agent': 'trmnl-control-mcp/0.2.1', ...Object.fromEntries(Object.entries(args.headers || {}).map(([k,v]) => [k, String(v)])) };
     let token;
     if (op.accountAuth) {
       token = await this.credentials.token(profile, this.fetch);

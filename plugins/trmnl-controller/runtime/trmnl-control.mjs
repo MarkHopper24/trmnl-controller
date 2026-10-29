@@ -62936,7 +62936,7 @@ var TrmnlClient = class {
         for (const [k, v] of Object.entries(value)) url.searchParams.append(`${key}[${k}]`, String(v));
       } else url.searchParams.set(key, String(value));
     }
-    const headers = { Accept: "application/json", "User-Agent": "trmnl-control-mcp/0.2.0", ...Object.fromEntries(Object.entries(args.headers || {}).map(([k, v]) => [k, String(v)])) };
+    const headers = { Accept: "application/json", "User-Agent": "trmnl-control-mcp/0.2.1", ...Object.fromEntries(Object.entries(args.headers || {}).map(([k, v]) => [k, String(v)])) };
     let token;
     if (op.accountAuth) {
       token = await this.credentials.token(profile, this.fetch);
@@ -72298,7 +72298,7 @@ function helperTools(ctx) {
   function add(name, description, properties, required2, run, readOnly = true, openWorld = false) {
     tools.push({ name: "trmnl_" + name, description, inputSchema: { type: "object", properties, required: required2, additionalProperties: false }, annotations: { readOnlyHint: readOnly, destructiveHint: false, idempotentHint: readOnly, openWorldHint: openWorld }, run });
   }
-  add("status", "Inspect configured profile names, local credential presence and supported features without exposing secrets. Does not prove account authentication; list devices after sign-in.", {}, [], async () => ({ version: "0.2.0", operations: operations.length, home: ctx.config.home, readOnly: ctx.config.readOnly, profiles: await Promise.all(Object.entries(ctx.config.profiles).map(async ([name, p]) => ({ name, origin: p.baseUrl, accountCredentialPresent: Boolean(ctx.config.env[p.tokenEnv || "TRMNL_API_KEY"] || await ctx.client.credentials.read(name)), deviceCredentialPresent: Boolean(ctx.config.env[p.deviceTokenEnv || "TRMNL_DEVICE_API_KEY"]) }))), transports: ["stdio", "streamable-http"], hostCapabilities: ctx.server?.getClientCapabilities() || {}, scheduling: "Use schedule_plan; MCP has no standard native scheduling capability." }));
+  add("status", "Inspect configured profile names, local credential presence and supported features without exposing secrets. Does not prove account authentication; list devices after sign-in.", {}, [], async () => ({ version: "0.2.1", operations: operations.length, home: ctx.config.home, readOnly: ctx.config.readOnly, profiles: await Promise.all(Object.entries(ctx.config.profiles).map(async ([name, p]) => ({ name, origin: p.baseUrl, accountCredentialPresent: Boolean(ctx.config.env[p.tokenEnv || "TRMNL_API_KEY"] || await ctx.client.credentials.read(name)), deviceCredentialPresent: Boolean(ctx.config.env[p.deviceTokenEnv || "TRMNL_DEVICE_API_KEY"]) }))), transports: ["stdio", "streamable-http"], hostCapabilities: ctx.server?.getClientCapabilities() || {}, scheduling: "Use schedule_plan; MCP has no standard native scheduling capability." }));
   add("catalog_search", "Find documented TRMNL API operations by purpose; returns tool names, summaries, tags and effects. All API operations are also directly exposed as tools.", { query: { type: "string" }, limit: { type: "integer", minimum: 1, maximum: 171 } }, [], ({ query = "", limit = 30 }) => operations.filter((o) => (o.id + o.description + o.tags.join(" ")).toLowerCase().includes(query.toLowerCase())).slice(0, limit).map((o) => ({ operationId: o.id, tool: o.name, summary: o.description.split("\n")[0], tags: o.tags, readOnly: o.annotations.readOnlyHint })));
   add("operation_schema", "Inspect the full verified request schema and method for an operation before using it.", { operationId: str }, ["operationId"], ({ operationId }) => {
     const o = byId.get(operationId);
@@ -72340,7 +72340,7 @@ function createContext(config2, fetcher) {
 }
 function createServer2(config2, context) {
   const ctx = context || createContext(config2);
-  const server = new Server({ name: "trmnl-controller", version: "0.2.0" }, { capabilities: { tools: {}, resources: {}, prompts: {} }, instructions: "Use catalog_search to discover tools. All authored TRMNL plugins must follow framework_guide and be validated and visually previewed. Natural-language work uses the current harness model. Host schedules are created by host tools, never implied by a schedule plan. Use only user-authorized remote actions. Device API getDisplay advances a playlist; use getCurrentScreen for passive inspection. Do not expose credentials. Official TRMNL-hosted MCP is also available at https://trmnl.com/mcp." });
+  const server = new Server({ name: "trmnl-controller", version: "0.2.1" }, { capabilities: { tools: {}, resources: {}, prompts: {} }, instructions: "Use catalog_search to discover tools. All authored TRMNL plugins must follow framework_guide and be validated and visually previewed. Natural-language work uses the current harness model. Host schedules are created by host tools, never implied by a schedule plan. Use only user-authorized remote actions. Device API getDisplay advances a playlist; use getCurrentScreen for passive inspection. Do not expose credentials. Official TRMNL-hosted MCP is also available at https://trmnl.com/mcp." });
   ctx.server = server;
   const ajv2 = new import_ajv3.default({ strict: false, allErrors: true, validateFormats: false });
   const helpers = helperTools(ctx).map((t) => ({ ...t, validate: ajv2.compile(t.inputSchema) }));
