@@ -2,7 +2,7 @@
 
 ## Version 0.2.0 packaging checks — 2026-10-29
 
-- All 26 behavior, protocol and distribution tests passed on Windows with Node 26.12.1; syntax, catalog, skill and manifest checks passed.
+- All 27 behavior, protocol and distribution tests passed on Windows with Node 26.12.1; syntax, catalog, skill and manifest checks passed. The release ZIP uses a fixed timestamp and matches byte-for-byte across repeated builds.
 - Codex CLI 0.165.0 accepted the repository-format marketplace and installed `trmnl-controller@trmnl-controller` version 0.2.0 from the locally generated catalog. The distribution test launched its bundled runtime from an unrelated folder with an empty credential home and discovered 199 tools.
 - Public read-only smoke checks through the bundled MCP returned HTTP 200 for model, palette, category and server-IP discovery. No device or playlist changes were used for those checks.
 - The npm candidate installed into a separate consumer folder and its CLI launched successfully. The dependency audit reported zero vulnerabilities after compatible dependency updates.

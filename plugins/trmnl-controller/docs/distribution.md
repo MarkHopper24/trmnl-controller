@@ -34,7 +34,7 @@ npm run check
 node scripts/smoke.mjs --bundle
 ```
 
-Bundling updates `plugins/trmnl-controller` and the catalog, creates a matching marketplace under `dist/marketplace`, and writes `dist/trmnl-controller-codex-VERSION.zip` with a SHA-256 sidecar. The ZIP's root is the plugin root. Dependency notices are collected from the actual bundled dependencies. Commit the regenerated plugin with its source and version bump.
+Bundling updates `plugins/trmnl-controller` and the catalog, creates a matching marketplace under `dist/marketplace`, and writes `dist/trmnl-controller-codex-VERSION.zip` with a SHA-256 sidecar. The ZIP's root is the plugin root. Sorted entries and fixed timestamps make repeated builds reproducible with the same source, toolchain and lockfile. Dependency notices are collected from the actual bundled dependencies. Commit the regenerated plugin with its source and version bump; CI rejects differences between the source build and that committed plugin.
 
 The distribution test launches the ready-made runtime from an unrelated working directory using an empty state home, enumerates tools, and checks version/credential absence. Use `codex plugin marketplace add ./dist/marketplace` and `codex plugin add trmnl-controller@trmnl-controller` to verify with a real Codex installer. Read-only account checks are a separate step.
 

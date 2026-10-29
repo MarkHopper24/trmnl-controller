@@ -38,6 +38,8 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=moderate
       - run: npm run bundle:plugin
+      - name: Check committed bundle matches source
+        run: git diff --exit-code -- plugins/trmnl-controller .agents/plugins/marketplace.json
       - run: npm test
       - run: npm run check
       - run: npm pack --pack-destination dist

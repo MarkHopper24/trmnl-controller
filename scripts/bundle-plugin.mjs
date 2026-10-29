@@ -46,8 +46,8 @@ await fs.writeFile('.agents/plugins/marketplace.json',marketplace);
 await fs.mkdir('plugins',{recursive:true});
 await fs.cp(plugin,'plugins/trmnl-controller',{recursive:true});
 const entries={};
-async function collect(dir,prefix=''){for(const item of await fs.readdir(dir,{withFileTypes:true})){const relative=prefix+item.name;if(item.isDirectory())await collect(path.join(dir,item.name),relative+'/');else entries[relative]=new Uint8Array(await fs.readFile(path.join(dir,item.name)));}}
+async function collect(dir,prefix=''){for(const item of (await fs.readdir(dir,{withFileTypes:true})).sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0)){const relative=prefix+item.name;if(item.isDirectory())await collect(path.join(dir,item.name),relative+'/');else entries[relative]=new Uint8Array(await fs.readFile(path.join(dir,item.name)));}}
 await collect(plugin);
-const zip=zipSync(entries,{level:6});const archive=path.resolve(`dist/trmnl-controller-codex-${pkg.version}.zip`);
+const zip=zipSync(entries,{level:6,mtime:new Date(2000,0,1),os:0});const archive=path.resolve(`dist/trmnl-controller-codex-${pkg.version}.zip`);
 await fs.writeFile(archive,zip);await fs.writeFile(archive+'.sha256',createHash('sha256').update(zip).digest('hex')+'  '+path.basename(archive)+'\n');
 console.log(JSON.stringify({plugin,marketplace:root,archive,bytes:zip.length},null,2));

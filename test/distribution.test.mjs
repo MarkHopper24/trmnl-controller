@@ -46,3 +46,14 @@ test('marketplace installs a complete branded plugin with portable assets', asyn
   assert.equal(JSON.parse(result.content[0].text).version, pkg.version);
   assert.equal(JSON.parse(result.content[0].text).profiles[0].accountCredentialPresent, false);
 });
+
+test('release ZIP uses fixed timestamps and is reproducible across builds', async () => {
+  const pkg = JSON.parse(await fs.readFile('package.json', 'utf8'));
+  const filename = `dist/trmnl-controller-codex-${pkg.version}.zip`;
+  const first = await fs.readFile(filename);
+  assert.equal(first.readUInt32LE(0), 0x04034b50);
+  assert.equal(first.readUInt16LE(10), 0, 'ZIP entry time must be midnight');
+  assert.equal(first.readUInt16LE(12), (20 << 9) | (1 << 5) | 1, 'ZIP entry date must be 2000-01-01');
+  await promisify(execFile)(process.execPath, ['scripts/bundle-plugin.mjs']);
+  assert.deepEqual(await fs.readFile(filename), first);
+});
