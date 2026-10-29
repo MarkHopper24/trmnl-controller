@@ -6,9 +6,9 @@ A local Codex plugin for building, managing and feeding TRMNL displays. Keep you
 
 An independent community integration by [MarkHopper24](https://github.com/MarkHopper24), not an official TRMNL product. The TRMNL name and logo belong to TRMNL.
 
-## Why use this instead of the hosted TRMNL MCP?
+## Doesn't TRMNL offer an official MCP?
 
-The [official TRMNL MCP](https://help.trmnl.com/en/articles/17432548-mcp-server) at `https://trmnl.com/mcp` is a good choice for connecting an agent directly to your account. It already supports devices, playlists, private plugin editing and related account operations. TRMNL also provides its own agent skills. If that's all you need, the hosted service has less to install and maintain.
+Yes, and this plugin leverages that MCP. The [official TRMNL MCP](https://help.trmnl.com/en/articles/17432548-mcp-server) at `https://trmnl.com/mcp` is a good choice for connecting an agent directly to your account. It already supports devices, playlists, private plugin editing and related account operations. TRMNL also provides its own agent skills. If that's all you need, the hosted service has less to install and maintain.
 
 TRMNL Controller is useful when the work needs to live on your machine:
 
