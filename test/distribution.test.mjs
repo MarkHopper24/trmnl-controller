@@ -35,6 +35,7 @@ test('marketplace installs a complete branded plugin with portable assets', asyn
   t.after(async () => { await client?.close(); await fs.rm(home, { recursive: true, force: true }); await fs.rm(outsider, { recursive: true, force: true }); });
   const config = JSON.parse(await fs.readFile(path.join(root, '.mcp.json'), 'utf8')).mcpServers['trmnl-controller'];
   const runtime = path.join(root, config.args[0]);
+  assert.equal((await fs.stat(runtime)).mode & 0o111, 0, 'Bundled runtime mode must match on every OS');
   const { stdout } = await promisify(execFile)(process.execPath, [runtime, '--help'], { cwd: outsider });
   assert.match(stdout, /worker/);
   const transport = new StdioClientTransport({ command: process.execPath, args: [runtime, 'serve'], cwd: outsider, env: { TRMNL_HOME: home, PATH: process.env.PATH || '' }, stderr: 'pipe' });

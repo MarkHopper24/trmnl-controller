@@ -22,6 +22,9 @@ await fs.copyFile('specs/source.json',path.join(plugin,'specs/source.json'));
 await fs.copyFile('LICENSE',path.join(plugin,'LICENSE'));
 await fs.writeFile(path.join(plugin,'README.md'),(await fs.readFile('README.md','utf8')).replaceAll('plugin/assets/','assets/'));
 const built=await build({entryPoints:['src/cli.mjs'],bundle:true,platform:'node',target:'node22',format:'esm',outfile:path.join(plugin,'runtime/trmnl-control.mjs'),banner:{js:"import { createRequire as __createRequire } from 'node:module'; const require = __createRequire(import.meta.url);"},legalComments:'eof',metafile:true});
+// esbuild marks shebang outputs executable on Unix. Launching through Node
+// needs no executable bit; normalize it to the committed Windows-built mode.
+await fs.chmod(path.join(plugin,'runtime/trmnl-control.mjs'),0o644);
 const dependencyRoots=new Set();
 for(const input of Object.keys(built.metafile.inputs)){
   const index=input.lastIndexOf('node_modules/');if(index<0)continue;
