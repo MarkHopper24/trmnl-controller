@@ -1,0 +1,49 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "trmnl-controller",
+  "version": "0.2.0",
+  "description": "Create responsive TRMNL plugins, manage devices and automate API data updates.",
+  "license": "MIT",
+  "keywords": [
+    "trmnl",
+    "e-paper",
+    "mcp",
+    "devices",
+    "plugins"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "TRMNL Controller",
+        "shortDescription": "Build and manage TRMNL displays and plugins.",
+        "longDescription": "Local projects, Framework-aware authoring and previews, documented TRMNL API tools, reusable data pipelines and scheduling workflows. Independent community integration.",
+        "developerName": "MarkHopper24",
+        "category": "Utilities",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/MarkHopper24/trmnl-controller",
+        "privacyPolicyURL": "https://github.com/MarkHopper24/trmnl-controller/blob/main/docs/security.md",
+        "defaultPrompt": [
+          "Show my TRMNL devices and help me build a responsive plugin."
+        ],
+        "brandColor": "#E9522D",
+        "composerIcon": "./assets/trmnl-brand.svg",
+        "logo": "./assets/trmnl-brand.svg",
+        "screenshots": [
+          "./assets/codex-workflow.jpg",
+          "./assets/plugin-overview.jpg"
+        ]
+      },
+      "requires_local_executor": true
+    }
+  },
+  "homepage": "https://github.com/MarkHopper24/trmnl-controller",
+  "repository": "https://github.com/MarkHopper24/trmnl-controller",
+  "author": {
+    "name": "MarkHopper24",
+    "url": "https://github.com/MarkHopper24"
+  }
+}

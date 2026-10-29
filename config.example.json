@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "default": {
+      "baseUrl": "https://trmnl.com",
+      "tokenEnv": "TRMNL_API_KEY",
+      "deviceTokenEnv": "TRMNL_DEVICE_API_KEY"
+    }
+  },
+  "allowedSourceHosts": ["api.open-meteo.com"],
+  "allowPrivateSources": false,
+  "readOnly": false,
+  "maxResponseBytes": 5242880,
+  "timeoutMs": 20000
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "trmnl-controller": {
+      "command": "node",
+      "args": [
+        "runtime/trmnl-control.mjs",
+        "serve"
+      ],
+      "cwd": "."
+    }
+  }
+}

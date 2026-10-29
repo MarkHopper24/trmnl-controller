@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.local/
+.env
+.env.*
+!.env.example
+*.tgz
+coverage/
+*.log
+output/
+*.exe
+.DS_Store
+Thumbs.db
+*.pem
+*.key
+*.pfx
+*.p12
+credentials*.json
+config.json
+**/docs/superpowers/
+.superpowers/
+.playwright-cli/
+# Reference downloads retained locally; the published spec is the pinned JSON.
+specs/oauth-resource.json
+specs/oauth-server.json
+specs/trmnl-api-client.rb
+specs/trmnlp-api-client.rb

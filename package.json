@@ -1,0 +1,53 @@
+{
+  "name": "trmnl-controller-mcp",
+  "version": "0.2.0",
+  "description": "TRMNL Controller: local Codex plugin, documented API tools and deterministic data pipelines.",
+  "type": "module",
+  "bin": {
+    "trmnl-controller": "src/cli.mjs",
+    "trmnl-control": "src/cli.mjs"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "files": [
+    "src",
+    "specs/trmnl.openapi.json",
+    "specs/source.json",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "config.example.json",
+    "plugin/assets"
+  ],
+  "scripts": {
+    "start": "node src/cli.mjs serve",
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "bundle:plugin": "node scripts/bundle-plugin.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "spec:update": "node scripts/update-spec.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "ajv": "^8.20.0",
+    "fflate": "^0.8.3",
+    "liquidjs": "^10.30.0",
+    "parse5": "^8.0.1",
+    "undici": "^8.12.3",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "homepage": "https://github.com/MarkHopper24/trmnl-controller",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarkHopper24/trmnl-controller.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarkHopper24/trmnl-controller/issues"
+  },
+  "author": "MarkHopper24"
+}

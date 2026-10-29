@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.jpg -text
+*.png -text
+*.zip -text
+# Generated dependencies contain whitespace inside protocol string literals.
+plugins/trmnl-controller/runtime/*.mjs -whitespace

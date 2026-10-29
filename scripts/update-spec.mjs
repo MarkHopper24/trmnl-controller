@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const source='https://trmnl.com/api-docs/openapi.json';
+const response=await fetch(source,{redirect:'error',signal:AbortSignal.timeout(20000)});
+if(!response.ok)throw new Error('Spec download failed: '+response.status);
+const text=await response.text();const spec=JSON.parse(text);
+if(!spec.openapi?.startsWith('3.')||!spec.paths)throw new Error('Unexpected spec format');
+await fs.writeFile('specs/trmnl.openapi.json',JSON.stringify(spec,null,2)+'\n');
+await fs.writeFile('specs/source.json',JSON.stringify({source,retrievedAt:new Date().toISOString(),sha256:createHash('sha256').update(text).digest('hex')},null,2)+'\n');
+console.log('Spec updated. Review operation/auth/schema changes and run tests before publishing.');

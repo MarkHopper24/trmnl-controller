@@ -1,0 +1,20 @@
+{
+  "name": "trmnl-controller",
+  "interface": {
+    "displayName": "TRMNL Controller"
+  },
+  "plugins": [
+    {
+      "name": "trmnl-controller",
+      "source": {
+        "source": "local",
+        "path": "./plugins/trmnl-controller"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Utilities"
+    }
+  ]
+}
